@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actions-runner
+  labels:
+    app: actions-runner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: actions-runner
+  template:
+    metadata:
+      labels:
+        app: actions-runner
+    spec:
+      imagePullSecrets:
+        - name: github-package-registry
+      containers:
+        - name: runner
+          image: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes-dev:latest
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: actions-runner  
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: /certs
+            - name: DOCKER_HOST
+              value: tcp://localhost:2376
+            - name: DOCKER_TLS_VERIFY
+              value: "1"
+            - name: DOCKER_CERT_PATH
+              value: /certs/client
+          volumeMounts:
+            - name: docker-certs
+              mountPath: /certs
+        - name: docker
+          image: docker:stable-dind
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: /certs
+          # TODO investigate rootless
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: docker-storage
+              mountPath: /var/lib/docker
+            - name: docker-certs
+              mountPath: /certs
+      volumes:
+        - name: docker-storage
+          emptyDir: {}
+        - name: docker-certs
+          emptyDir: {}
