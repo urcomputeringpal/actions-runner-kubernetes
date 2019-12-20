@@ -64,10 +64,10 @@ kubectl -n kube-system delete secret actions-runner
 ```
 
 * Create a [new secret](#create-a-secret-with-a-fresh-runner-token)
-* Upgrade to the latest release
+* Upgrade to the [latest release](https://github.com/urcomputeringpal/actions-runner-kubernetes/releases)
 
 ```
-kubectl --namespace <namespace> apply -k https://github.com/urcomputeringpal/actions-runner-kubernetes/releases/<latest release>
+kubectl --namespace <namespace> apply -k https://github.com/urcomputeringpal/actions-runner-kubernetes?ref=v2.164.0-ucp1
 ```
 
 * Cleanup any stale runners listed in your repository's Settings.
@@ -77,5 +77,5 @@ kubectl --namespace <namespace> apply -k https://github.com/urcomputeringpal/act
 ### Running the most recently built image from a local checkout
 
 ```
-kubectl -n <namespace> apply -f deployment.yaml
+kubectl -n <namespace> apply -k kustomize
 ```
