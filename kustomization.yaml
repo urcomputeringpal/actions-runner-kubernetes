@@ -8,7 +8,7 @@ bases:
 images:
   - name: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes-dev
     newName: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes
-    newTag: v2.164.0-ucp1
+    newTag: v2.165.2-ucp1
     # newTag: master
 
 patchesStrategicMerge:
