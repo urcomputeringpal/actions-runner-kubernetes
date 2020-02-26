@@ -7,10 +7,10 @@ cd work
 
 # Configure the runner
 /opt/actions-runner/config.sh \
-    --url "${REPOSITORY}" \
+    --replace \
     --token "${TOKEN}" \
-    --startuptype service \
     --unattended \
+    --url "${REPOSITORY}" \
     --work "${PWD}"
 
 # Off to the races
