@@ -8,8 +8,8 @@ bases:
 images:
   - name: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes-dev
     newName: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes
-    # newTag: v2.168.0-ucp1
-    newTag: master
+    newTag: v2.168.0-ucp1
+    # newTag: master
 
 patchesStrategicMerge:
   # Useful for refs that change frequently, like master
