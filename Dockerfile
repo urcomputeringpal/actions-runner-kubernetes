@@ -1,8 +1,6 @@
 # GitHub's Linux runners default to the latest Ubunutu
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#supported-runners-and-hardware-resources
-# Ubuntu uses the latest tag to represent the latest stable release
-# https://hub.docker.com/_/ubuntu/
-FROM ubuntu:latest
+FROM ubuntu:bionic
 
 # Add our installation script
 COPY install.sh /root/
