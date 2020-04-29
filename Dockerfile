@@ -8,7 +8,7 @@ FROM ubuntu:latest
 COPY install.sh /root/
 
 # Install and update the system in one tidy layer
-ARG ACTIONS_RUNNER_VERSION="2.168.0"
+ARG ACTIONS_RUNNER_VERSION="2.169.1"
 ENV ACTIONS_RUNNER_VERSION=$ACTIONS_RUNNER_VERSION
 RUN /bin/bash /root/install.sh
 
