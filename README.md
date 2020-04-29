@@ -67,7 +67,7 @@ kubectl -n kube-system delete secret actions-runner
 * Upgrade to the [latest release](https://github.com/urcomputeringpal/actions-runner-kubernetes/releases)
 
 ```
-kubectl --namespace <namespace> apply -k https://github.com/urcomputeringpal/actions-runner-kubernetes?ref=v2.169.1-ucp1
+kubectl --namespace <namespace> apply -k https://github.com/urcomputeringpal/actions-runner-kubernetes?ref=v2.169.1-ucp2
 ```
 
 * Cleanup any stale runners listed in your repository's Settings.
