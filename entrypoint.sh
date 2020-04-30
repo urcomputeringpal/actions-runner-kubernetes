@@ -13,7 +13,5 @@ cd work
     --url "${REPOSITORY}" \
     --work "${PWD}"
 
-export PATH=$PATH:/opt/actions-runner
-
 # Off to the races
-exec /bin/bash /opt/actions-runner/bin/runsvc.sh
+exec /bin/bash PATH=$PATH:/opt/actions-runner /opt/actions-runner/bin/runsvc.sh
