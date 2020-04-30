@@ -24,8 +24,6 @@ spec:
             - secretRef:
                 name: actions-runner  
           env:
-            - name: BUMPME
-              value: "124"
             - name: DOCKER_TLS_CERTDIR
               value: /certs
             - name: DOCKER_HOST
