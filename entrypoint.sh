@@ -13,8 +13,9 @@ cd work
     --url "${REPOSITORY}" \
     --work "${PWD}"
 
-# Set path
-echo "PATH=$PATH:/opt/actions-runner" > .path
+export "PATH=/bin:$PATH:/opt/actions-runner"
+echo "Setting path to $PATH ..."
+echo "PATH=$PATH" > .path
 
 # Off to the races
 exec /bin/bash /opt/actions-runner/bin/runsvc.sh
