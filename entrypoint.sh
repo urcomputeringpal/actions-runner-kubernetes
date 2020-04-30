@@ -14,4 +14,5 @@ cd work
     --work "${PWD}"
 
 # Off to the races
-exec /bin/bash /opt/actions-runner/run.sh
+cd /opt/actions-runner
+/opt/actions-runner/bin/runsvc.sh
