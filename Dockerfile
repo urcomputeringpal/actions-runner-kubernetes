@@ -1,6 +1,4 @@
-# GitHub's Linux runners default to the latest Ubunutu
-# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#supported-runners-and-hardware-resources
-FROM ubuntu:bionic
+FROM nektos/act-environments-ubuntu:18.04
 
 # Add our installation script
 COPY install.sh /root/
