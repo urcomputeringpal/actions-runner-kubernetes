@@ -35,6 +35,8 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
+            - name: work
+              mountPath: /work
         - name: docker
           image: docker:stable-dind
           env:
@@ -48,8 +50,12 @@ spec:
               mountPath: /var/lib/docker
             - name: docker-certs
               mountPath: /certs
+            - name: work
+              mountPath: /work
       volumes:
         - name: docker-storage
           emptyDir: {}
         - name: docker-certs
+          emptyDir: {}
+        - name: work
           emptyDir: {}
