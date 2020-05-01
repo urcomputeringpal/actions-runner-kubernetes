@@ -1,18 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actions-runner
+  name: actions-runner-dev
   labels:
-    app: actions-runner
+    app: actions-runner-dev
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: actions-runner
+      app: actions-runner-dev
   template:
     metadata:
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/docker: unconfined
       labels:
-        app: actions-runner
+        app: actions-runner-dev
     spec:
       imagePullSecrets:
         - name: github-package-registry
@@ -20,6 +22,9 @@ spec:
         - name: runner
           image: docker.pkg.github.com/urcomputeringpal/actions-runner-kubernetes/actions-runner-kubernetes-dev:latest
           imagePullPolicy: Always
+          command:
+          - /bin/sleep
+          - "5678765456789876567898765"
           envFrom:
             - secretRef:
                 name: actions-runner  
@@ -35,27 +40,31 @@ spec:
           volumeMounts:
             - name: docker-certs
               mountPath: /certs
-            - name: work
-              mountPath: /work
         - name: docker
-          image: docker:stable-dind
+          image: docker:stable-dind-rootless
+          args:
+            - --experimental
+          securityContext:
+            procMount: Unmasked
+            capabilities:
+              add:
+              - SETUID
+              - SETGID
+              - SYS_ADMIN
+              - NET_ADMIN
           env:
+            # - name: DOCKERD_ROOTLESS_ROOTLESSKIT_FLAGS
+            #   value: 
             - name: DOCKER_TLS_CERTDIR
               value: /certs
           # TODO investigate rootless
-          securityContext:
-            privileged: true
           volumeMounts:
             - name: docker-storage
               mountPath: /var/lib/docker
             - name: docker-certs
               mountPath: /certs
-            - name: work
-              mountPath: /work
       volumes:
         - name: docker-storage
           emptyDir: {}
         - name: docker-certs
-          emptyDir: {}
-        - name: work
           emptyDir: {}
