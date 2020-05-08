@@ -3,7 +3,7 @@ on:
   push:
 jobs:
   docker:
-    name: docker
+    name: build
     runs-on: ubuntu-latest
     steps:
     - name: checkout
