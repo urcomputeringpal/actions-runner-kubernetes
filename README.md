@@ -13,7 +13,6 @@ Unofficial support for running [GitHub Actions](https://github.com/features/acti
 
 * Not associated with, provided by, or supported by GitHub.
 * Runs a Docker-in-Docker container in your cluster **in priviledged mode** to facilitate running Docker-based Actions. **Priviledge escalatations are almost certainly possible as a result**.
-* Auto-update behavior is as-of-yet undefined; **the avaibility of a new actions-runner release may prevent your actions from running**.
 * Credentials are not persisted in any manner outside of the container filesystem. This, combined with the fact that the token provided during the setup process has a 1h TTL, means that **service will be interrupted if runner Pods are deleted or evicted**.
 * A limited set of development utilities are provided. Work to keep the set of installed utilities in sync with upstream is TBD.
 * **[Not reccommended for use on open source repositories](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).**
