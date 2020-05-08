@@ -29,8 +29,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ env.GITHUB_REPOSITORY }}
-        # TODO
-        # cache_froms: ${{ env.GITHUB_REPOSITORY }}:master
+        cache_froms: ${{ env.GITHUB_REPOSITORY }}:master
         tag_with_ref: true
         always_pull: true
         add_git_labels: true
@@ -43,10 +42,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ env.GITHUB_REPOSITORY }}
-        # TODO
-        # cache_froms: ${{ env.GITHUB_REPOSITORY }}:master
+        cache_froms: ${{ env.GITHUB_REPOSITORY }}:master
         tag_with_ref: true
-        # fake out a master tag temporarily
-        tags: latest,master
+        tags: latest
         always_pull: true
         add_git_labels: true
